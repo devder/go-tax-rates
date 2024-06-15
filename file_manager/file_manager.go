@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"os"
 	"time"
 )
@@ -17,7 +18,7 @@ func (fm FileManager) ReadLines() ([]string, error) {
 	file, err := os.Open(fm.InputFilePath)
 
 	if err != nil {
-		return nil, errors.New("failed to open file")
+		return nil, fmt.Errorf("failed to open file, please check if file exists at %v", fm.InputFilePath)
 	}
 
 	defer file.Close() // func is called after the ReadLines finishes
